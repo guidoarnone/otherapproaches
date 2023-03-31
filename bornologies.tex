@@ -1,0 +1,137 @@
+\chapter{Bornologies}
+
+\section{A primer on topological vector spaces}
+
+The purpose of this section is that the reader gets comfortable with the basic objects of functional analysis.
+
+\begin{definition}
+A \textit{topological vector space} is a vector space with a topology compatible with the vector space structure. That is, addition and scalar multiplication are continuous operations. 
+\end{definition}
+
+\subsection{Spaces of continuous functions}
+
+Let \(K\) be a compact topological space. The conitnuous functions \(f \colon K \to \C\) form a  vector space under the pointwise operations \[(f + g)(x) \defeq f(x) + g(x), \quad (\alpha \cdot f)(x) \defeq \alpha f(x).\] We denote this vector space by \(\Cont(K)\) and equip it with the norm \[\norm{f} \defeq \sup \setgiven{\abs{f(x)}}{x \in K}.\]  
+
+\begin{proposition}\label{prop:cont-compact}
+The vector space \(\Cont(K)\) with the supremum norm above is a Banach space. More generally, for any topological space \(X\), the vector space \(\Cont_b(X)\) defined by continuous, bounded functions is a Banach space for the supremum norm. 
+\end{proposition}
+
+\begin{proof}
+Let \(f\), \(g \in \Cont_b(X)\) and \(\alpha \in \C\). Then for an arbitrary \(x \in X\),  \(\abs{f(x) + g(x)} \leq \abs{f(x)} + \abs{g(x)} \leq \norm{f} + \norm{g}\), so that \(\norm{f + g} \leq \norm{f} + \norm{g}\). Similarly, \(\abs{\alpha f(x)} = \abs{\lambda} \abs{f(x)}\), and taking suprema yields \(\norm{\alpha \cdot f} = \abs{\alpha} \norm{f}\). Consequently, the supremum is indeed a semi-norm. In fact, it is also a norm as if \(f \neq 0\), then \(f(x) \neq 0\) for some \(x\), so that \(\norm{f} \neq 0\). 
+
+Next, we show that \(\Cont_b(X)\) with \(\norm{-}\) is complete. Consider a Cauchy net \((f_i)_{i \in I}\) in \(\Cont_b(X)\) for the supremum norm. For each \(x \in X\), the net \((f_i(x))_{i \in I}\) is Cauchy in \(\C\) as well, since \(\abs{f_i(x) - f_j(x)} \leq \norm{f_i - f_j}\). Since \(\C\) is complete, this net is convergent to a unique complex number \(f(x)\). \textbf{Furthermore, the net \((f_i)_{i \in I}\) converges uniformly to \(f\)}. Consequently, \(f\) is continuous. Finally, \(\norm{f} \leq \epsilon + \norm{f_i} < \infty\), so that \(f\) is bounded. This completes the proof.  
+\end{proof}
+
+  Treat examples like \(\Cont(X)\), \(\Cont_b(X)\) and \(\Cont_0(X)\). 
+
+\subsection{Spaces of measurable functions}
+
+For a measure space \((X,\Omega, \mu)\), treat examples like \(\mathcal{L}^p(X,\Omega,\mu)\). Specialise this to \(l^p(X)\) for the counting measure and \(\Omega\) the power-set. 
+
+\subsection{Spaces of differentiable functions}
+
+Treat examples like \(\Cont^\infty(M)\) and \(\mathcal{S}(\R^n)\).
+
+\subsection{Subspaces, quotients and completions}
+
+
+Let \(V\) be a semi-normed topological vector space, and \(W \subseteq V\) a subspace. Then the quotient topology on \(V/W\) is defined by the \textit{quotient semi-norm} \[\norm{x + V} \defeq \inf \setgiven{\norm{x+ w}}{w \in W}.\]
+
+\begin{theorem}
+Let \(V\) be a Banach space and \(W \subseteq V\) a closed subspace. Then \(V/W\) with the quotient norm is a Banach space. 
+\end{theorem}
+
+
+\begin{definition}\label{def:completion}
+The \textit{completion} of a semi-normed space \(V\) is a Banach space \(\comb{V}\) with a continuous linear map \(\iota \colon V \to \comb{V}\) such that for any other continuous linear map \(f \colon V \to W\) into a Banach space, there is a unique continuous linear map \(g \colon \comb{V} \to W\) such that \(g \circ \iota = f\). 
+\end{definition}
+
+
+\begin{theorem}
+The completion of a semi-normed topological vector space \(V\) exists and is unique. 
+\end{theorem}
+
+
+Completions also exist for general topological vector spaces. For our purposes, the Banach space completions considered above will suffice. 
+
+\subsection{Bounded operators on Banach spaces}
+
+Here's the place to talk about the category of Banach spaces.
+
+\subsection{What exactly goes wrong?}
+
+The category of Banach spaces is too small. Enlarge it to \textit{Frechet spaces}, but this category does not have a unique \(\Hom\)-functor. On spaces larger than Frechet spaces, there's also the issue that separate continuity is not the same as joint continuity - this leads to problems in representation theory. Finally, homological algebra is problematic in this category. 
+
+\section{Bornological functional analysis}
+
+At the level of Banach spaces, continuity is the same as boundedness. We enlarged this category by taking its pro-completion, but problems persist if we care about say the topology on the mapping space. How about taking its ind-completion and working instead with bounded maps? This leads to the theory of bornological vector spaces. 
+
+
+\subsection{Bornological vector spaces over \(\R\) and \(\C\)}
+
+Throughout this section, we work with vector spaces over \(\R\) and \(\C\).
+
+\begin{definition}[Bornology]
+A \textit{bornology} on a vector space \(V\) is a collection \(\mathfrak{P}\) of its subsets (called \textit{bounded subsets}) satisfying the following natural properties:
+
+\begin{itemize}
+\item \(\{x\} \in \mathfrak{P}\) for all \(x \in V\);
+\item if \(S \subseteq T\) and \(T \in \mathfrak{P}\), then \(S \in \mathfrak{P}\);
+\item \(S \cup T \in \mathfrak{P}\) whenever \(S\), \(T \in \mathfrak{P}\);
+\item if \(S \in \mathfrak{P}\), then \(r S \in \mathfrak{P}\) for \(r>0\);
+\item any subset \(S \in \mathfrak{P}\) is contained in a disk \(T \in \mathfrak{P}\). 
+\end{itemize}
+ 
+\end{definition}
+
+
+
+\begin{example}[Fine bornology]
+Finite dimensional subspaces of a vector space. It is the smallest bornology on a vector space.
+\end{example}
+
+\begin{example}[Von Neumann bornology]
+Let \(V\) be a locally convex topological vector space. A subset \(B\subseteq V\) is \textit{von-Neumann bounded} if \(\nu(B) \subseteq \R_{>0}\) for each semi-norm \(\nu\). Recovers `usual' boundedness.  
+\end{example}
+
+\begin{example}[Pre-compact bornology]
+Let \(V\) be a locally convex topological vector space. A subset \(B \subseteq V\) is \textit{pre-compact} if for every neighbourhood \(U\) of \(0\), there is a finite subset \(F \subseteq V\) such that \(B \subseteq U + F\).  
+\end{example}
+
+
+
+\begin{itemize}
+\item We like to work with \textit{complete} topological or bornological vector spaces (eg: Banach spaces). Define completion for bornological vector spaces.
+\item If the space is metrisable, then topological convergence and Cauchyness are equivalent to bornological convergence and Cauchyness (in the von Neumann and precompact bornologies);
+\item For a metrisable space, topological completeness is equivalent to completeness in the von Neumann and precompact bornology.
+
+\end{itemize}
+
+
+
+\subsection{Bornological vector spaces in the nonarchimedean setting}
+
+
+Copy-paste \cite{Cortinas-Cuntz-Meyer-Tamme:Nonarchimedean}*{Section 2}
+
+
+\subsection{Abstract models for bornologies}
+
+
+\begin{theorem}[Meyer, Meyer-Mukherjee]
+The category of complete bornological vector spaces over \(\R\), \(\C\) or \(\Q_p\) embeds into the category of inductive system of Banach spaces. The essential image of this functor is the category of inductive systems of Banach spaces with injective structure maps.
+\end{theorem}
+
+Viewing complete bornological vector spaces as certain inductive systems of Banach spaces, we can therefore reinterpret the bornological theory using categorical operations on the category of Banach spaces. 
+
+\begin{definition}
+Let \(R\) be a Banach ring. The category of complete bornological \(R\)-modules is defined as the category of inductive systems of Banach \(R\)-modules with injective structure maps.
+\end{definition}
+
+
+\begin{theorem}
+The above category has great properties.
+\end{theorem}
+
+
+\textbf{Mention application in analytic geometry.}

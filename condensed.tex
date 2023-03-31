@@ -1,0 +1,48 @@
+\chapter{Condensed mathematics}
+
+\subsection{An interlude on sheaf theory}
+
+\subsection{Condensed sets and condensed objects in a category}
+
+In this section, we recall some preliminaries on condensed mathematics from \cite{clausenscholze1,clausenscholze2}. Recall that the pro-\`etale site of a point \(*_{\mathrm{pro\'{e}t}}\) is the category of pro-finite sets with jointly surjective families of maps as covers. The idea is consider sheaves of sets for this site, but since pro-finite sets are a large category, one needs a set-theoretically convenient way to handle this category. To this effect, let \(\kappa\) be an uncountable strong cardinal. Then denoting by $*_{\kappa-\mathrm{pro\'{e}t}}$ the category of \(\kappa\)-small pro-finite sets (again with jointly surjective maps as covers), a \(\kappa\)-\textit{condensed set} is a sheaf for this site. The category of \(\kappa\)-condensed sets is denoted by \(\mathrm{Cond}_\kappa\). In general, for any category \(\mathpzc{C}\) with \(\kappa\)-small limits and colimits, the category of \(\mathpzc{C}\)-valued sheaves on the site \(*_{\kappa-\mathrm{pro\'{e}t}}\) is the category of \textit{\(\kappa\)-condensed \(\mathpzc{C}\)-objects}. Finally, suppose \(\kappa < \kappa'\), there is an adjunction 
+
+$$\adj{LKE_{\kappa<\kappa'}}{\mathrm{Cond}_{\kappa}(\mathcal{C})}{\mathrm{Cond}_{\kappa'}(\mathcal{C})}{U_{\kappa<\kappa'}}$$
+where the right adjoint is the forgetful functor and the left is Kan extension (and sheafification). Then one defines
+$$\mathrm{Cond}(\mathpzc{C})\defeq \colim_{\kappa}\mathrm{Cond}_{\kappa}(\mathcal{C})$$ as the category of \textit{condensed} \(\mathpzc{C}\)-objects. 
+
+We now recall some terminology from homological algebra:
+
+\begin{definition} In what follows, let \(\mathpzc{C}\) be an abelian (or more generally, exact) category. 
+\begin{itemize}
+\item A subcategory \(\mathcal{P} \subseteq \mathpzc{C}\) is said to \textit{generate} \(\mathpzc{C}\) if for every object \(X \in \mathpzc{C}\), there is an epimorphism \(P \onto X\), where \(P \in \mathcal{P}\).
+\item An object \(P \in \mathpzc{C}\) is called \textit{projective} if \(\Hom_{\mathpzc{C}}(P,-)\) maps epimorphisms to surjections. In the case of exact categories, we replace epimorphisms with strict epimorphisms.  
+\item The category \(\mathpzc{C}\) has \textit{enough projectives} if the full subcategory of projective objects generates \(\mathpzc{C}\). 
+\item Let \(\mathpzc{C}\) be a category with filtered colimits. An object \(X \in \mathpzc{C}\) is called \textit{compact} if \(\Hom_{\mathpzc{C}}(X,-)\) commutes with colimits of diagrams \(I \to \mathpzc{C}\) for every filtered category \(I\).  
+\item We call the category \(\mathpzc{C}\) \textit{elementary} if it has a small generating subcategory of compact projective objects. 
+\item Suppose \(\mathpzc{C}\) has countable coproducts and in addition, a symmetric monoidal category. We then say that \(\mathpzc{C}\) has \textit{symmetric projectives} if for every projective object \(P\) and any \(n \in \N\), \(\mathsf{Sym}_{\mathpzc{C}}^n(P)\) is a projective object. 
+\end{itemize}
+\end{definition}
+
+
+
+We need the following, which is essentially the content of Lecture II of \cite{clausenscholze1} 
+
+\begin{theorem}
+For each $\kappa$, $\mathrm{Cond}_{\kappa}(\mathrm{Ab})$ is a strongly monoidal elementary abelian category with symmetric projectives.
+\end{theorem}
+
+\begin{proof}
+That it is abelian is clear, since it is the category of sheaves of abelian groups on a site. The existence of a generating set of compact projectives is \cite{clausenscholze1}*{Theorem 2.2}. We repeat the construction for completeness. For $T$ a $\kappa$-condensed set, consider the $\kappa$-condensed abelian group $\mathbb{Z}[T]$, which is the sheafification of the functor that sends $S\in*_{\kappa-\mathrm{pro\'{e}t}}$ to the free abelian group on $\mathbb{Z}[T(S)]$. It is shown in \cite{clausenscholze1} that this is a flat, compact projective object of $\mathrm{Cond}(\mathrm{Ab})$. Moreover they show that the functor $\mathbb{Z}[-]:\mathrm{Cond}_{\kappa}(\mathrm{Set})\rightarrow\mathrm{Cond}(\mathrm{Ab})$ is symmetric monoidal. It is also a left adjoint. Thus for $T$ and $T'$ we have
+$$\mathbb{Z}[T\times T']\cong \mathbb{Z}[T]\otimes\mathbb{Z}[T']$$
+so that the tensor product of two projectives is projective, and we have
+$$S^{n}(\mathbb{Z}[T])\cong\mathbb{Z}[S^{n}(T)],$$
+so projectives are symmetric.
+\end{proof}
+
+
+
+
+
+\subsection{Solid abelian groups and the solidification functor}
+
+\subsection{Liquid vector spaces}
