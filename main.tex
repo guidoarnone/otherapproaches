@@ -20,6 +20,10 @@
 \usepackage{color}
 \usepackage{tikz-cd}
 
+\newcommand{\exs}{\center{\Large\textbf{Exercises for 
+Section \thesection}}}
+
+\newcommand{\edit}[1]{\marginpar{\footnotesize{#1}}}
 
 \DeclareMathAlphabet{\mathpzc}{OT1}{pzc}{m}{it}
 \newcommand\C{\mathbb C}
@@ -48,6 +52,8 @@
 \newcommand{\idealin}{\mathrel{\triangleleft}} % relation of being an ideal
 \newcommand*{\into}{\rightarrowtail}
 \newcommand*{\onto}{\twoheadrightarrow}
+\newcommand{\vN}{\mathsf{vN}} % von Neumann bornology
+\newcommand{\Cpt}{\mathsf{Cpt}} % precompact bornology
 
 \DeclarePairedDelimiter{\abs}{\lvert}{\rvert}% absolute value
 \DeclarePairedDelimiter{\norm}{\lVert}{\rVert}% norm
@@ -72,6 +78,7 @@
 \newcommand{\Ho}{\mathrm{H}}% homology of a chain complex
 \newcommand{\im}{\mathrm{im}}%image
 \newcommand{\dvr}{V}% discrete valuation ring
+\newcommand{\dvf}{F}% discrete valuation ring
 \newcommand{\dvgen}{\pi}% uniformiser
 \newcommand{\born}{\mathcal B}% bornology
 \newcommand{\Alg}{\mathsf{Alg}}
@@ -84,6 +91,7 @@
 \newtheorem{lemma}[equation]{Lemma}
 \newtheorem{corollary}[equation]{Corollary}
 \newtheorem{proposition}[equation]{Proposition}
+\newtheorem{exercise}[subsection]{Exercise}
 \theoremstyle{remark}
 \newtheorem{remark}[equation]{Remark}
 \theoremstyle{definition}
