@@ -1,0 +1,86 @@
+\subsection{The category of bornological vector spaces}
+
+
+
+In this section, we will study categorical operations in the category of bornological vector spaces \(\mathsf{Born}_\C\) and its relatives, namely separated \(\mathsf{Born}_{\C}^s\) and complete bornological vector spaces \(\mathsf{CBorn}_\C\).
+
+
+The first operations we look at are \textit{subspaces} and \textit{quotients}. Let \((V, \mathcal{B}(V))\) be a bornological vector space and \(W \subseteq V\) a vector subspace. 
+
+\begin{itemize}
+    \item The \textit{subspace bornology} on \(W\) is the bornology whose bounded subsets are those which are bounded in \(V\). That is, 
+    \[\mathcal{B}(W) = \setgiven{B \subseteq W}{B \in \mathcal{B}(V)} = \setgiven{B \cap W}{B \in \mathcal{B}(V)}.\]
+    \item The \textit{quotient bornology} on \(V/W\) is the bornology \[\mathcal{B}(V/W) \defeq \setgiven{p(B)}{B \in \mathcal{B}(V)},\] where \(p \colon V \to V/W\) is the quotient map.
+\end{itemize}
+
+We always equip subspaces and quotients with the subspace and quotient bornologies. These satisfy the property that a linear map \(f \colon X \to W\) is bounded in the subspace bornology on \(W\) if and only if it is bounded in \(V\), and a map \(g \colon V/W \to X\) is bounded if and only if \(g \circ p \colon V \to X\) is bounded. Here \(X\) is an arbitrary bornological vector space. In other words, the subspace and quotient bornologies play the role of the subspace and quotient topologies in the theory of topological vector spaces.
+
+
+
+\begin{lemma}[Sequential criterion for separatedness]\label{lem:sequential-separatedness}
+    Let \(V\) be a bornological vector space. Then \(V\) is separated if and only if every convergent sequence has a unique limit. 
+\end{lemma}
+
+\begin{proof}
+    \textbf{Redundancy. Perhaps just point out in the previous time this was proven that separatedness means \(\overline{\{0\}} = \{0\}\).} Let \((x_n)\) be a convergent sequence in \(V\), and let \(V\) be separated. Suppose this sequence has two limits \(x\) and \(y\), then the sequence \(0 = x_n - x_n\) has limit \(x - y\). So it suffices to show that the constant null sequence has limit zero, or equivalently, \(\overline{\{0\}} = \{0\}\). Suppose \(z\) is a limit of \(0\). By definition of bornological convergence this means that there is a null sequence of positive real numbers \((\epsilon)_n\) such that \(z \in \epsilon_n D\), for a bounded disk \(D\) and each \(n\). But then \(\varrho(z) = 0\) and since \(\varrho\) is a norm by separatedness, we are done.
+
+    Conversely, suppose \(\overline{\{0\}} = \{0\}\). Let us hypothetically suppose that for a bounded disk \(D\), the gauge semi-norm is not a norm. Then there is a \(z \neq 0\) such that \(\varrho_D(z) = 0\), where \(D\) is a bounded disk. It is then left as an exercise to check that there is a sequence \((\lambda_n)\) converging to zero such that \(z \in \lambda_n D\). This implies that the constant \(0\) sequence bornologically converges to \(z\), which is a contradiction. 
+\end{proof}
+
+\begin{lemma}\label{lem:extensions-inherentance}
+Let \(V\) be a bornological vector space and \(W\) a subspace. Equip \(W\) and \(V/W\) with the subspace and quotient bornologies. We then have the following:
+\begin{enumerate}
+    \item\label{eq:1} \(W\) is separated if \(V\) is separated;
+    \item\label{eq:2} \(V/W\) is separated if and only if \(W\) is closed;
+    \item\label{eq:3} Suppose \(V\) is complete. Then \(W\) is complete if and only if \(W\) is closed, in which case \(V/W\) is complete.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+Part \ref{eq:1} is clear. Now suppose \(V/W\) is separated. Then \(\{0\}\) is closed in \(V/W\) by the proof of Lemma \ref{lem:sequential-separatedness}. Since a bounded linear map is continuous for the bornological topology of bornologically closed subsets, \(W = p^{-1}(\{0\}) \subseteq V\) is closed in \(V\). Conversely, if \(V/W\) is not separated, then there is \(0 \neq x \in V/W\) and a null sequence \((\lambda_n)\) such that \(x \in \lambda_n D\) for some bounded disk \(D \subseteq V/W\). Now there are \(y \in V\) and \(S \in \mathcal{B}(V)\) such that \(g(y) = x\) and \(p(S) = D\). Writing \(x = \lambda_n x_n\), we can find \(y_n \in S\) such that \(p(y_n) = x_n\). Consequently, \(p(y - \lambda_n y_n) = 0\), so that \(y - \lambda_n y_n \in W\). It converges to \(y\), which does not lie in \(W\) since \(p(y) = x \neq 0\) by hypothesis. So what we have found is a convergent sequence in \(W\) whose limit is not in \(W\), so \(W\) cannot be closed. This proves \ref{eq:2}. Finally,  suppose \(W\) is complete. Then it is closed since for every bounded disk \(D\), \(W_D\) is a Banach space for the gauge norm on \(D\), which implies in particular that the disk \(D\) is norming. The converse is left as an exercise. 
+\end{proof}
+
+
+We now revisit the relations we had encountered \textbf{some time ago (draw that commuting diagram)}. We had canonical inclusion functors \[\mathsf{CBorn}_{\C} \hookrightarrow \mathsf{Born}_{\C}^s \hookrightarrow \mathsf{Born}_\C\] between the categories of complete, separated and (all) bornological vector spaces. We now construct canonical maps going in the other direction.
+
+\begin{definition}\label{def:completion-separated}
+Let \(V\) be a bornological vector space. 
+\begin{itemize}
+    \item The \textit{separated quotient} of \(V\) is the vector space \(\mathsf{sep}(V) \defeq V/\overline{\{0\}}\) with the quotient bornology. It has the universal property that for any separated bornological vector space \(W\), there are natural isomorphisms \(\mathsf{Hom}(V,W) \cong \mathsf{Hom}(\mathsf{sep}(V), W)\).
+    \item The \textit{completion} of a separated bornological vector space is a complete bornological vector space \(\comb{V}\)  characterised by the universal property \(\mathsf{Hom}(V,W) \cong \mathsf{Hom}(\comb{V},W)\).
+\end{itemize}
+\end{definition}
+
+Lemma \ref{lem:sequential-separatedness} shows that the separated quotient is indeed separated. Note that although the universal property of completions determines the object \(\comb{V} \in \mathsf{CBorn}_\C\), we have not yet shown its existence. We shall do this in a later section. 
+
+We now look at \textit{kernels and cokernels}. Let \(f \colon V \to W\) be a bounded linear map between bornological vector spaces. 
+
+\begin{itemize}
+    \item The \textit{kernel} of \(f\) is the vector subspace \(\ker(f) = \setgiven{x \in V}{f(x) = 0}\) with the subspace bornology it inherits from \(V\).
+    \item The \textit{cokernel} of \(f\) is a vector space \(\coker(f) = V/f(W)\) with the quotient bornology it inherits from \(V/W\).  
+\end{itemize}
+
+Just as in the vector space case, one checks that \(\ker(f)\) and \(\coker(f)\) are really kernels and cokernels in the categorical sense. If the reader is unfamiliar with category theory, this is an instructive exercise. 
+
+Now consider a bounded linear map \(f \colon V \to W\) between separated bornological vector spaces. Then by Lemma \ref{lem:extensions-inherentance} applied to \(V\), we see that \(\ker(f)\) is separated. It also satisfies the universal property of kernels since this can already be checked in \(\mathsf{Born}_\C\). Finally, suppose \(V\) is complete. Then since \(V/\ker(f) \subseteq W\) is separated (because \(W\) is separated), \(\ker(f)\) is closed by Lemma \ref{lem:extensions-inherentance}. Another application of Lemma \ref{lem:extensions-inherentance} shows that \(\ker(f)\) is complete, being a closed subspace of \(V\).  Note that so far there has been no difference between ordinary vector spaces and topological or bornological vector spaces. That is, kernels are just vector space kernels with a canonical bornology appended to it.
+
+
+What happens to cokernels? This is somewhat tricky and should be earmarked as the starting point of the deviation from linear algebra. Since the image of a bounded linear map need not be closed, the quotient \(W/f(V)\) need not be separated in light of Lemma \ref{lem:extensions-inherentance}. So to make it separated, we need to close the image of \(f\), and by Lemma \ref{lem:extensions-inherentance}, \(W/\overline{f(V)}\) is indeed separated (and complete, if \(W\) is complete). It is now an exercise to check that the quotient \(W/\overline{f(V)}\) satisfies the universal property of cokernels in both \(\mathsf{Born}_{\C}^s\) and \(\mathsf{CBorn}_{\C}\). 
+
+The conclusion is therefore that the categories \(\mathsf{Born}_\C\), \(\mathsf{Born}_{\C}^s\), and \(\mathsf{CBorn}_\C\) have kernels and cokernels. 
+
+
+We now come to direct sums and direct products. Let \((V_i)\) be a family of bornological vector spaces, where \(i\) is an arbitrary indexing set. We define the direct sum \(\bigoplus_{i \in I} V_i\) as the ordinary vector space direct sum with the bornology generated by \(\iota_i(S_i) \subseteq  \bigoplus_{i \in I} V_i\), where \(S_i\) is bounded in \(V_i\) for each \(i \in I\). By construction this says that the inclusion maps \(\iota_i \colon V_i \to \bigoplus_{i \in I} V_i\) are bounded for each \(i \in I\). Dually, the direct product of the given family is defined as the usual product \(\prod_{i \in I} V_i\) of vector spaces, together with the bornology where a subset \(S \subseteq \prod_{i \in I} V_i\) is bounded if and only if the projections \(p_i(S) \subseteq V_i\) is bounded for each \(i\). One checks just as in the case of vector spaces that the direct sum and product with their respective bornologies satisfy the universal property of direct sums and products. With this, we conclude the following:
+
+
+\begin{theorem}\label{thm:bornologies-complete}
+The categories \(\mathsf{Born}_{\C}\), \(\mathsf{Born}_{\C}^s\) and \(\mathsf{CBorn}_\C\) are both complete and cocomplete. That is, they have all limits and colimits. 
+\end{theorem}
+
+\begin{proof} We have seen that any of the categories considered have both 
+products and coproducts. Moreover, since these are additive categories which 
+have kernels and cokernels, they have equalizers and coequalizers. 
+The result now follows from the fact that any category with products (resp. coproducts) and equalizers (resp. coequalizers) is complete (resp. cocomplete); see for example
+\cite{riehl}*{Theorem 3.4.12}. 
+\end{proof}
+

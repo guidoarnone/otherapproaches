@@ -1,0 +1,78 @@
+\subsection{Quasi-abelian categories}
+
+In this section we fix an additive category  $\mathsf C$ 
+with kernels and cokernels. 
+
+Recall that the \emph{image} of a morphism $f \colon X \to Y$
+is defined as $\im(f) := \ker(\coker(f))$, and its \emph{coimage}
+as $\coim(f) := \coker(\ker(f))$.
+There always exists a canonical comparison map between 
+the coimage and the image, which fits in the following diagram:
+\[
+\begin{tikzcd}
+\ker(f) \arrow{r} & X \arrow{d} \arrow{r} & Y \arrow{d}\arrow{r} & \coker(f)\\
+& \coim(f) \arrow[dashed]{r}[above]{\exists!}& \im(f) & 
+\end{tikzcd}
+\]
+We say that $f$ is \emph{strict} if the dashed arrow above is an isomorphism. Informally, 
+a morphism is strict if it 
+satisfies Noether's first isomorphism theorem. 
+
+We say that $\mathsf C$ is \emph{abelian}
+if all morphisms are strict. These are categories in which classical 
+homological algebra takes place; important examples include that 
+of the category of modules over a ring and sheaves 
+of abelian groups over a space. None of the 
+categories that we have considered so far are abelian. To see this, 
+we first record the following lemma.
+
+\begin{proposition}\label{prop:ab-epimono=iso} Let $f \colon X  \to Y$ be a strict morphism in $\mathsf C$. 
+If $f$ is both a monomorphism and an epimorphism, then 
+it is an isomorphism.
+\end{proposition}
+\begin{proof}
+If $f$ is a monomorphism, then $\ker(f) = 0$. Likewise, the fact that $f$
+is an epimorphisms implies that $\coker(f) = 0$. It follows that
+$\coim(f) = \coker(0 \to X) = X$ and $\im(f) = \ker(Y \to 0)$; consequently, 
+the comparison map $\coim(f) \to \im(f)$ can be identified with $f$ itself.
+\end{proof}
+
+\begin{corollary} The categories $\Ban$, $\Born_\C$, $\Born_\C^s$ and $\CBorn_\C$ 
+are not abelian.
+\end{corollary}
+\begin{proof} By Proposition \ref{prop:ab-epimono=iso}, it suffices 
+to exhibit an arrow in each of the categories in question which is both
+a monomorphism and an epimorphism but not an isomorphism.
+
+In $\Born_\C$, $\Born_\C^s$ and $\CBorn_\C$, 
+we may take the identity function of an infinite dimensional
+Banach space $X$ viewed as an arrow $\Cpt(X) \to \vN(X)$.
+To see that this is not an isomorphism note
+for example that the open unit ball of $X$ is von Neumann
+bounded but not precompact.
+
+For $\Ban$ we may consider the inclusion $\ell^1 \to c_0$. This map
+is injective with dense range, and so it is both a monomorphism
+and an epimorphism. However, 
+it is not bijective and thus it cannot be an isomorphism.
+\end{proof}
+
+As the result above shows, if we wish
+to do homological algebra in our setting 
+we will need to consider a less restrictive
+notion than that of an abelian category. 
+We say that $\mathsf C$ is \emph{quasi-abelian}
+if strict monomorphisms are stable under pushouts
+and struct epimorphisms are stable under pullbacks.
+Explictly, this means that for every square
+\begin{equation}\label{diag:quasiab}
+\begin{tikzcd}
+X \arrow{r}{f} \arrow{d} & Y \arrow{d} \\
+Y' \arrow{r}{g} & Z
+\end{tikzcd}
+\end{equation}
+we have that:
+\begin{itemize}
+    \item[(i)] if \eqref{diag:quasiab} is a pullback square and $g$ is a strict epimorphism, then so is $f$.
+    \item[(ii)] if \eqref{diag:quasiab} is a pushout square and $f$ is a strict monomorphism, then so is $g$.
+\end{itemize}

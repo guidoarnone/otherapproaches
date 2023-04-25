@@ -1,4 +1,4 @@
-\documentclass[a4paper, 11pt]{memoir}
+\documentclass[a4paper, 11pt, oneside]{memoir}
 \usepackage[margin=1in]{geometry}
 
 \usepackage[utf8]{inputenc}
@@ -20,8 +20,17 @@
 \usepackage{color}
 \usepackage{tikz-cd}
 
-\newcommand{\exs}{\center{\Large\textbf{Exercises for 
-Section \thesection}}}
+\newcommand{\exs}{
+\begin{center}
+{\Large\textbf{Exercises for 
+Section \thesection}}
+\end{center}
+}
+
+\newcommand{\ExerciseSection}{
+\addtocounter{section}{1}
+\section*{Solutions to \thesection}
+}
 
 \newcommand{\edit}[1]{\marginpar{\footnotesize{#1}}}
 
@@ -36,7 +45,14 @@ Section \thesection}}}
 
 \DeclareMathOperator{\colim}{colim}
 \DeclareMathOperator{\Hom}{Hom}% space of linear maps
-\DeclareMathOperator{\Ext}{Ext}% space of linear maps
+\DeclareMathOperator{\Ext}{Ext}
+\DeclareMathOperator{\conv}{conv}
+\DeclareMathOperator{\coker}{coker}
+
+\newcommand{\intc}{\mathsf{in}}
+\newcommand{\circhull}{\circ}
+\newcommand{\dhull}{\lozenge}
+\newcommand{\comphull}{\heart}
 
 \newcommand{\Bor}{\fB\mathrm{or}}% category of all bornological modules
 \newcommand{\borno}{\comb{\Bor}(\dvr)}% complete bornological modules
@@ -72,11 +88,16 @@ Section \thesection}}}
 \newcommand\weq{\overset\sim\longrightarrow}
 \newcommand{\Home}{\mathsf{Hom}}
 
+\DeclareMathOperator{\Ban}{Ban}
+\DeclareMathOperator{\Born}{Born}
+\DeclareMathOperator{\CBorn}{Born}
+
 
 \newcommand{\op}{\mathrm{op}}% opposite algebra
 \newcommand{\id}{\mathrm{id}}% identity map
 \newcommand{\Ho}{\mathrm{H}}% homology of a chain complex
 \newcommand{\im}{\mathrm{im}}%image
+\newcommand{\coim}{\mathrm{coim}}%coimage
 \newcommand{\dvr}{V}% discrete valuation ring
 \newcommand{\dvf}{F}% discrete valuation ring
 \newcommand{\dvgen}{\pi}% uniformiser
@@ -97,6 +118,7 @@ Section \thesection}}}
 \theoremstyle{definition}
 \newtheorem{definition}[equation]{Definition}
 \newtheorem{example}[equation]{Example}
+\newtheorem{solution}[subsection]{Solution to Exercise}
 
 
 \usepackage[colorlinks=true]{hyperref}
@@ -124,8 +146,10 @@ Section \thesection}}}
 \mainmatter
 
 \input{introduction}
-\input{bornologies}
+\input{bornologies/bornologies}
 \input{condensed}
+
+\input{exercises/exercises}
 
 \backmatter
 

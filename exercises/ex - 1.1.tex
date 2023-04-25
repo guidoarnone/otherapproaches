@@ -1,0 +1,157 @@
+\ExerciseSection
+
+\begin{solution}
+Call $W$ the quotient $V_{D_1}\oplus V_{D_2}/ \ker{q}$ and let $\overline{q}$  be the induced map $W \to V_{D_1+D_2}$. It's clear that $\overline{q}$ is bijective. Indeed, if $v \in V_{D_1+D_2}=\R_{> 0}\cdot (D_1+D_2)$, there exists $\lambda\in \R_{> 0}$, $v_1\in D_1$, and $v_2\in D_2$ s.t. $v= \lambda(v_1+v_2)$. But then $\lambda v_1 \in V_{D_1}$, $\lambda v_2\in V_{D_2}$ and $v=q(\lambda v_1,\lambda v_2)$. We only need to show that it preserves the semi-norms. By definition, 
+\begin{align*}
+    \rho_{W}(v)&= \inf_{v_1+v_2=v,v_1\in V_{D_1},v_2\in V_{D_2}}\max\{\rho_{D_1}(v_1),\rho_{D_2}(v_2)\}\\
+    &= \inf_{v_1+v_2=v,v_1\in V_{D_1},v_2\in V_{D_2}}\max\{\inf\{\lambda\geq 0:v_1\in \lambda D_1\},\inf\{\lambda\geq 0:v_2\in \lambda D_2\}\}\\
+    &= \inf_{v_1+v_2=v,v_1\in V_{D_1},v_2\in V_{D_2}}\inf\{\lambda\geq 0:v_1\in \lambda D_1, v_2\in \lambda D_2\} 
+\end{align*}
+and 
+\begin{align*}
+    \rho_{D_1+D_2}(v)&=\inf\{\lambda: v\in \lambda(D_1+D_2)\}
+\end{align*}
+for any $v\in V$. 
+
+For any $\varepsilon > 0$, $v \in (\rho_{D_1+D_2}(v)+\varepsilon)(D_1+D_2)$. But the last set is nothing but $(\rho_{D_1+D_2}(v)+\varepsilon)D_1+(\rho_{D_1+D_2}(v)+\varepsilon)D_2 $. Therefore, there exists $v_i\in (\rho_{D_1+D_2}(v)+\varepsilon)D_i$ such that $v=v_1+v_2$. It follows that $\rho_W(v)\leq \rho_{D_1+D_2}(v)+\varepsilon$ for any $\varepsilon>0$. Then $\rho_W(v)\leq \rho_{D_1+D_2}(v)$.
+
+On the other direction, for any $\varepsilon > 0$, there exists $v=v_1+v_2$ with $v_i\in V_{D_i}$ such that 
+\[\inf\{\lambda\geq 0:v_1\in \lambda D_1, v_2\in \lambda D_2\} \leq \rho_W(v)+\varepsilon\]
+and, in consequence, $v_i\in (\rho_W(v)+2\varepsilon)D_i$. Then $v$ has to belong to $(\rho_W(v)+2\varepsilon)(D_1+D_2)$. It follows that $\rho_{D_1+D_2}(v)\leq \rho_W(v)$.
+\end{solution}  
+
+\begin{solution}
+It's clear that the intersection of any two (internally closed) disks is again a (internally closed) disk. The point is to prove completeness. For it, consider the map $q:V_{
+D_1}\oplus V_{D_2} \to V_{D_1+D_2}$ given by $q(x,y)=x+y$. Note that $q$ is continuous by the last exercise. It follows that it's kernel $W$ is closed in $V_{D_1}\oplus V_{D_2}$. Now, $W$ consist of elements $(v,-v)$ with $v\in V_{D_1}\cap V_{D_2} = V_{D_1\cap D_2}$. It follows that the map $d:V_{D_1\cap D_2}\to V_{D_1}\oplus V_{D_2}$ given by $d(v)=(v,-v)$ provides a bijection between $V_{D_1\cap D_2}$ and $W$. But, by definition,
+\begin{align*}
+    \rho_{D_1\cap D_2}(v)&=\inf\{\lambda \geq 0:v \in \lambda (D_1\cap D_2) \}\\
+    &= \inf\{\lambda \geq 0:v \in \lambda D_1\text{ and }v\in\lambda D_2) \}\\
+    &= \max\{\inf\{\lambda \geq 0:v \in \lambda D_1\},\inf\{\lambda \geq 0:v \in \lambda D_2 \}\}\\
+    &= \max\{\rho_{D_1}(v),\rho_{D_2}(v)\}\}\\
+    &= \max\{\rho_{D_1}(v),\rho_{D_2}(-v)\}\}\\
+    &= \rho_{D_1\oplus D_2}(v,-v)
+\end{align*}
+and, therefore, $d$ is an isometry. Finally, if $D_1$ and $D_2$ are complete, $V_{D_1}\oplus V_{D_2}$ is complete. Therefore, $V_{D_1\cap D_2}\simeq W$ is complete being closed in a complete space.
+\end{solution} 
+
+\begin{solution}
+    It's trivial. Indeed, let's check everything.
+    \begin{itemize}
+        \item $\{x\}\in \cap \mathcal{B}_\alpha$ for any $x\in V$: We know that $\{x\}\in \mathcal{B}_\alpha$.
+        \item If $S\subset T$ and $T\in \cap \mathcal{B}_\alpha$, then $S\in \cap \mathcal{B}_\alpha$: Indeed, for any $\alpha$, $T\in \mathcal{B}_\alpha$ and, therefore, $S\in \mathcal{B}_\alpha$. We conclude that $S\in\cap\mathclap{B}_\alpha$ as our previous sentence holds for any $\alpha$.
+        \item $S\cup T\in\cap\mathcal{B}_\alpha$ whenever $S,T\in\cap\mathcal{B}_\alpha$: As before, $S,T\in \mathcal{B}_\alpha$ for each $\alpha$ and, in consequence, $S\cup T\in \mathcal{B}_\alpha$
+        \item if $S\in\cap\mathcal{B}_\alpha$, then $rS\in\cap\mathcal{B}_\alpha$ for $r>0$: Same as before.
+        \item any subset $S\in \cap\mathcal{B}_\alpha$ is contained in a disk $T\in \cap\mathcal{B}_\alpha$: We can choose a disk $S\subset D_\alpha\in \mathcal{B}_\alpha$ for each $\alpha$ since $S\in \mathcal{B}_\alpha$. Then $S\subset D:=\cap D_\alpha$ and $D\in \cap\mathcal{B}_\alpha$ as $D\subset D_\alpha\in \mathcal{B}_\alpha$ for any $\alpha$. The last point to see is that $D$ is a disk, being an intersection of disks. This is straightforward to check.  
+    \end{itemize}
+\end{solution}
+
+\begin{solution}
+    Fix a set $S$ and define
+    \[D:=\left\{\sum_{i=1}^n \lambda_i s_i : n\geq 1, s_i \in S, \lambda_i \in \C, \sum_{i=1}^n |\lambda_i| \le 1\right\}.\]
+    Our objective is to show that $S^d= \conv(S^\circ)=D$.
+
+    First, let's show that $D$ is convex and circled, i.e. a disk. The last property follows by noting that if $\sum |\lambda\lambda_i| = |\lambda|\sum |\lambda_i|$. For the former, let $\sum\lambda_is_i,\sum\mu_j\tilde s_j\in D$ and $t\in [0,1]$. Then
+    \[t\sum\lambda_is_i+(1-t)\sum\mu_j\tilde s_j = \sum t\lambda_is_i + \sum (1-t)\mu_j\tilde s_j\]
+    belongs to $D$ as 
+    \begin{align*}
+        \sum |t\lambda_i| + \sum |(1-t)\mu_j| & = t\sum |\lambda_i| + (1-t)\sum |\mu_j|\\
+        &\leq t+ 1-t\\
+        &\leq 1.
+    \end{align*}
+    We conclude that $S^d\subset D$.
+
+    Second, we claim $\conv(S^\circ)\subset S^d$. For it, note that $S^d$ has to contains $\lambda S$ for any $|\lambda|\leq 1$ being $S^d$ a disk. Since it's also convex, it has to contain the convex hull of $S^\circ$, i.e. $\conv(S^\circ)$.
+    
+    Finally, we claim that $D\subset \conv(S^\circ)$. Let's prove by induction that $\conv(S^\circ)$ contains 
+    \[D^{(n)}=\left\{\sum_{i=1}^n \lambda_i s_i : s_i \in S, \lambda_i \in \C, \sum_{i=1}^n |\lambda_i| \le 1\right\}\]
+    Note that $D=\cup D^{(n)}$. For $n=1$, we know it. Indeed, $D^{(1)}=S^\circ$. Assume it holds for $n-1$. Pick any linear combination as in the definition of $D^{(n)}$ and let $t=|\lambda_n|$. Note the following three inequalities:
+    \begin{itemize}
+        \item $0\leq t\leq 1$,
+        \item $|t^{-1}\lambda_n| \leq 1$, and
+        \item $\sum\limits_{i=1}^{n-1} |(1-t)^{-1}\lambda_i| \leq 1$
+    \end{itemize}
+    Then $t^{-1}\lambda_ns_n$ and $\sum\limits_{i=1}^{n-1} (1-t)^{-1}\lambda_is_i$ belongs to $S^\circ\subset \conv(S^\circ)$ and $D^{(n-1)}\subset \conv(S^\circ)$ respectively. Since $\conv(S^\circ)$ is convex,
+    \[t(t^{-1}\lambda_ns_n) + (1-t)\sum_{i=1}^{n-1} (1-t)^{-1}\lambda_is_i =\sum_{i=1}^n \lambda_i s_i  \]
+    belongs to $S^d$. This finishes the proof of our claim.
+
+    To summarize, we have proved that $D\subset \conv(S^\circ) \subset S^d\subset D$. It follows that these three sets are equal.
+\end{solution}
+
+\begin{solution}
+    Let $T: V\to W$ be any linear map and $S$ be a bounded set of $V$. By definition, there exists a finite set $F\subset V$ such that $S\subset F^d$. Then $T(S) \subset T(F^d)$. To conclude that $T(S)$ is bounded it suffices to prove that $T(F^d)\subset T(F)^d$. But this is clear by the previous exercise since $T$ is linear.
+
+    Let's consider the functor $\mathsf{Fine} \colon \mathsf{Vect}_{\C} \to \mathsf{Born}_\C$ defined by equipping a vector space with is fine bornology and map a linear map to itself. We just proved that $\mathsf{Fine}$ is well-defined. Moreover, it is fully faithful since any morphism in the bornology category is linear and the triviality of a morphism in any of these categories is defined by its underlying set-theoretically function. 
+\end{solution}
+
+\begin{solution}
+    We need to show that, given two Banach spaces $V$ and $W$, being bornologically equibounded is the same as being operator-norm-bounded on $\Hom(V, W)$.   
+
+    One direction is easy if $S$ is bounded for the operator norm, there exists a constant $C$ such that $||f(v)||\leq C||v||$ for any $v\in V$ and $f\in S$. But, if $B\subset V$ is bounded, by definition, there exists a $\lambda>0$ such that $B\subset\{||v||<\lambda\}$. Therefore, $S(B)$ is bounded by $C\lambda$. 
+
+    Now assume that $S$ is equibounded. We need to show that it is bounded by the operator norm. This follows by choosing $B$ to be the closed unit ball of $V$. Indeed, 
+    \[\max_{v\in B,f\in S} ||f(v)|| = \max_{f\in S}\max_{v\in B}||f(v)|| = \max_{f\in S}||f||\]
+    and we know that this maximum is finite as $S(B)$ is bounded. 
+\end{solution}
+
+\begin{solution}
+    Only need to show that topological convergence to $0$ implies convergence to $0$ in the precompact bornology. The rest has been shown in Guido's lecture.
+
+    Let $\{x_n\}_{n\in\N}$ a null sequence in the topological sense and take a decreasing basis of disk neighborhoods $\{V_n\}_{n\in\N}$ as in Guido's proof. Define the sets $X=\{x_n:n\in\N\}$ and
+    \[X_N:=\left\{x_n:n\in\N, x_n\in\frac{1}{N^2}V_N\right\}\]
+    for any $N\in\N$. By enlarging $V_1$, we can assume that $X\subset V_1$. Let $Y$ be the disk hull of $\cup_N NX_N$. Note that $Y$ is a disk, $X\subset X_1\subset Y$ and that $X\setminus\frac{1}{N}Y\subset X\setminus X_N$ is finite
+    for any $N>0$ by hypothesis. Therefore, if we show that $Y$ is precompact, we are done. To this end, pick any neighborhood $U$ of $0$. We know that there exists some $N>0$ such that $V_N\subset U$. Moreover, for any $M\geq N$, $MX_M\subset \frac{M}{M^2}V_M\subset \frac{1}{N}V_N$. Therefore,
+    \begin{align*}
+        Y&= \left(\bigcup_{i=1}^{N-1} iX_i \bigcup_{M\geq N} MX_M\right)^d\\
+        &\subset \sum_{i=1}^{N-1} (iX_i\cup\{0\})^d + \left(\bigcup_{M\geq N} MX_M\right)^d\\
+        &\subset \sum_{i=1}^{N-1} (iX_i\cup\{0\})^d + \frac{1}{N}V_N
+    \end{align*}
+    because $V_N$ is a disk.
+    On the other hand, for any $i$, the sequence $\{ix_n\}_{n\in\N}$ converges to $0$ and, in consequence, $iX_i\cup\{0\}$ is precompact (see the proof of \ref{prop:mult-frechet}). Then, we can pick a finite set $F_i$ such that $iX_i\cup\{0\}\subset \frac{1}{N}V_N + F_i$. This implies that
+    \begin{align*}
+        Y&\subset \sum_{i=1}^{N-1} (F_i+ \frac{1}{N}V_N) + \frac{1}{N}V_N\\
+        &\subset V_N + \left(\sum_{i=1}^{N-1} F_i\cup\{0\}\right)    
+    \end{align*}
+    and we conclude that $Y$ is precompact.
+\end{solution}
+
+\begin{solution}
+    By the universal property of each tensor product, we only need to show that \[\Hom(V, \underline{\mathsf{Hom}}(W, Z)) \simeq \Hom^{(2)}(V\times W; Z)\] for any $V,\ W$ and $Z$ bornological vector spaces. We already know this for the underlying vector spaces. We have to check that the notions of boundedness agree.
+
+    Let $f: V\times W\to Z$ be a bilinear map. Assume that it's bounded. Then for each $v\in V$, the map $f_v=f(v,-):W\to Z$ is bounded again. Indeed, if $B\in \mathcal{B}(W)$, $\{v\}\times B$ is bounded in $V\times W$ and therefore $f_v(W)=f(\{v\}\times B)\subset Z$ is bounded. More generally, if $B_1\subset V$ is a bounded set, $L=\{f_v:v\in B_1\}$ is equibounded as $L(B_2)=f(B_1\times B_2)$ for any $B_2\subset W$. This shows that $f_-:V\to \underline{\mathsf{Hom}}(W,Z)$ is bounded.  
+
+    Conversely, assume that $f_-$ is bounded. Let $B_1\subset V$, $B_2\subset W$ be bounded sets. Then $f_-(B_1)$ is an equibounded family and, thus, $f_-(B_1)(B_2)$ is bounded. But the last set is nothing but $f(B_1\times B_2)$. Since the sets $B_1\times B_2$ as before are a basis for the bornology of $V\times W$, we conclude that $f$ is bounded.
+\end{solution}
+
+
+% \begin{proposition}
+%     If $D_1$ and $D_2$ are internally closed disks and $D_1\cap D_2$ is complete, their sum $D_1+D_2$ is also internally closed. In particular, if $D_1$ and $D_2$ are internally closed and complete disks, $D_1+D_2$ is internally closed and complete.
+% \end{proposition}
+% \begin{proof}
+%     Let's first show that for $D_1\oplus D_2\subset V_{D_1}\oplus V_{D_2}$ is internally closed. Suppose that $z\in V_{D_1}\oplus V_{D_2}$ satisfies $tz\in D_1\oplus D_2$ for every $t\in [0,1)$. Write $tz=x_t+y_t$ with $x_t\in D_1$ and $y_t\in D_2$. Note that $sx_t-tx_s = - (sy_t-ty_s)$ for every $t,s\in [0,1)$. In $V_{D_1}\oplus V_{D_2}$, this implies that $sx_t-tx_s = 0 = sy_t-ty_s$. Therefore, there exists $x\in V_{D_1}$ and $y\in V_{D_2}$ such that $tx=x_t$ and $ty=y_t$ for every $t\in [0,1)$. Indeed, take $x=2x_{0,5}$ and $y=2y_{0,5}$. Then $x\in D_1$ and $y\in D_2$ as $D_1$ and $D_2$ are internally closed. It follows that $z = 2(x_{\frac{1}{2}}+y_{\frac{1}{2}})=x+y$ belongs to $D_1\oplus D_2$.
+
+%     Before proving that $D_1+D_2$ is internally closed, observe that the kernel of the sum map $q: V_{D_1}\oplus V_{D_2}\to V_{D_1+D_2}$ consist of pairs $(v,-v)$ with $v\in V_{D_1\cap D_2}$. Moreover, the map $\iota: V_{D_1\cap D_2} \to V_{D_1}\oplus V_{D_2}$ preserve the semi-norm as $\rho_{D_1\cap D_2}=\max\{\rho_{D_1},\rho_{D_2}\}$ (this is proved in exercise 1.1.2) and gives an isometric with the kernel of $q$. In addition, $D_1\cap D_2$ is internally closed. 
+
+%     Let $z\in V_{D_1}\oplus V_{D_2}$ such that $tq(z) \in D_1+D_2$ for every $t\in [0,1)$. This means that, for every such $t$, there exists $v_t\in V_{D_1\cap D_2}$ such that $tz-\iota(v_t)\in D_1\oplus D_2$. In particular, 
+%     \begin{align*}
+%         \rho_{D_1\cap D_2}(v_t) &=\rho_{D_1\oplus D_2}(\iota(v_t))\\
+%         &\leq t\rho_{D_1\oplus D_2}(z) + 1\\
+%         &\leq \rho_{D_1\oplus D_2}(z) + 1
+%     \end{align*}
+%     In other words, $v_t\in \lambda (D_1\cap D_2)$ for $\lambda = \rho_{D_1\oplus D_2}(z) + 1$. 
+
+%     Now, how are the choices for $v_t$? I claim that there is an closed set $F_t\subset V_{D_1\cap D_2}$ of choices. Indeed, $F_t=\iota^{-1}(tz+(D_1\oplus D_2))$
+%     and $D_1\oplus D_2$ is closed being the closed unit ball (Here be use that $D_1\oplus D_2$ is internally closed).
+
+%     Being $F_t$ closed and bounded in a complete norm space $V_{D_1\cap D_2}$, $F_t$ is compact. Therefore, the set \[Z_t=\{v_t\in F_t:\rho_{D_1\oplus D_2}(tz-\iota(v_t))\leq \rho_{D_1\oplus D_2}(tz-\iota(v_t'))\forall v_t'\in F_t\}\subset F_t\]
+%     is not empty. Indeed, if $v_t^{n}$ is a sequence such that \[\lim_{n\to\infty} \rho_{D_1\oplus D_2}(tz-\iota(v_t^{n}))=\inf_{v_t\in F_t}\rho_{D_1\oplus D_2}(tz-\iota(v_t^{n})),\] we can take a convergence subsequence $v_t^{n_k}\to v_t$ in $F_t\subset V_{D_1\cap D_2}$. By continuity of $\iota$, translation, and $\rho_{D_1\oplus D_2}$, $v_t$ has the desired property. 
+    
+%     Fix $v\in \frac{1}{t_0}Z_{t_0}\subset V_{D_1\cap D_2}$ for some $t_0$. For any $t> t_0$, choice $v_t\in F_t$. Then $\frac{t_0}{t}v_t\in F_{t_0}$ as $\frac{t_0}{t}(D_1\oplus D_2)\subset D_1\oplus D_2$. This means that 
+%     \begin{align*}
+%         \rho_{D_1\oplus D_2}(t_0z-\iota(t_0v))&\leq \rho_{D_1\oplus D_2}(t_0z-\iota(\frac{t}{t_0}v_t))\\
+%         &\leq \frac{t_0}{t} \rho_{D_1\oplus D_2}(tz-\iota(v_t))\\
+%         &\leq \frac{t_0}{t}
+%     \end{align*}
+%     and, in consequence, $tv = \frac{t}{t_0}t_0v \in F_t$. 
+
+%     We proved that $tz-t\iota(v)\in D_1\oplus D_2$ for every $t\in [0,1)$. Since $D_1\oplus D_2$ is internally closed, we have $z-\iota(v)\in D_1\oplus D_2$. This implies that $q(z)\in D_1+D_2$.
+% \end{proof}

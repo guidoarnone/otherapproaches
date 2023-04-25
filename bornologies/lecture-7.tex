@@ -1,0 +1,61 @@
+
+\subsection{From bornologies to inductive systems}
+
+In this section, we define a category that is closely related to the category of bornological vector spaces, namely, the category of inductive systems over semi-normed vector spaces. But before we get there, we recall some generalities on inductive systems. Throughout this section, let \(\mathcal{C}\) be an additive category with finite limits. This means that \(\mathcal{C}\) has kernels, cokernels, finite products and finite coproducts. 
+
+An \textit{inductive system} over \(\mathcal{C}\) is a functor \(F \colon I \to \mathcal{C}\), where \(I\) is a directed set. Concretely, this corresponds to objects \((F_i)_{i \in I}\) in \(\mathcal{C}\), and for \(i \leq j\), a morphism \(F_i \to F_j\), which we call structure maps of the inductive system. We often denote inductive systems by \((A_i)_{i \in I}\). The inductive systems over \(\mathcal{C}\) assemble into a category where the morphisms are defined as \[\Hom(A,B) = \varprojlim_{i \in I} \varinjlim_{j \in J} \Hom(A_i,B_j),\] where \(A = (A_i)_{i \in I}\) and \(B = (B_j)_{j \in J}\). More concretely, we can represent any morphism \(f \colon A \to B\) of inductive systems by a family of morphisms \(f_i \colon A_i \to B_{j(i)}\) for \(j \colon I \to J\) such that for all \(k \geq i\), there is an \(l \in J\) with \(l \geq j(i), j(k)\) for which the  diagram  
+\[
+\begin{tikzcd}
+A_i \arrow{r}{f_i} \arrow{d}{} & B_{j(i)} \arrow{dr}{} & \\
+A_k \arrow{r}{f_k} & B_{j(k)} \arrow{r}{} & B_l
+\end{tikzcd}
+\] commutes, where the unlabelled arrows are the structure maps of the inductive system. Actually, it can be arranged that a morphism \(f\) be represented as a family \((f_l \colon A_l \to B_l)_{l \in L},\) by appropriately modifying the indexing directed set of \(A\) and \(B\). 
+
+The following is relevant for our theory:
+
+\begin{theorem}
+The categories \(\mathsf{Ind}(\mathsf{Norm}_\C^{1/2})\), \(\mathsf{Ind}(\mathsf{Norm}_\C)\) and \(\mathsf{Ind}(\mathsf{Ban})\) are bicomplete.
+\end{theorem}
+
+\begin{proof}
+    Since we are working additive categories, it suffices to show that each of these categories has kernels, cokernels, coproducts and products. We also only discuss the proof for \(\mathsf{Ind}(\mathsf{Norm}_\C^{1/2})\), as the proof for the other two categories works the same way.
+
+We first discuss kernels. Let \(f \colon A \to B\) be a morphism in \(\mathsf{Ind}(\mathsf{Norm}_\C^{1/2})\). As already remarked, we can represent \(f\) by a diagram \((f_i \colon A_i \to B_i)\) of morphisms in \(\mathcal{C}\), after possibly changing the indexing set. Now by hypothesis, \(\ker(f_i)\) exists in \(\mathcal{C}\). We leave it for the reader to check the universal property, namely, morphism an equaliser diagram \(Z \to A \overset{f}\rightrightarrows B\) factors uniquely through \((\ker(f_i))_{i \in I}\). This shows that \(\ker(f) \cong (\ker(f_i))_{i \in I}\). The dual argument applies to \(\coker(f) \cong (\coker(f_i))_{i \in I}\).  
+
+For coproducts, let \((A^{(k)})_{k \in K}\) be a collection of inductive systems, where \(A^{(k)} = (A_i^{(k)}, \alpha_i^{j,(k)})_{i \in I_k}\). Define \((F,\varphi)\), where \(F \subseteq K\) is finite and \(\varphi \colon F \to I\) assigns to each \(k \in F\), and element of \(I_k\). We define a partial order on this collection \(\Lambda\) as follows: \[(F,\varphi) \leq (F',\varphi') \text{ if and only if } F \subseteq F' \text{ and } \varphi(k) \leq \varphi'(k) \text{ for } k \in F.\] We leave it for the reader to check that this really is a directed set. With this as the indexing category, we can now define the inductive system \[\bigoplus_{k \in K} A^{(k)} \colon (F,\varphi) \mapsto A_{(F, \varphi)} = \bigoplus_{k \in F}A_{\varphi(k)}^{(k)}.\] There are canonical maps \(A^{(k)} \to \bigoplus_{k \in K}A^{(k)},\) induced by \(A_i^{(k)} \to A_{(\{k\}, k \mapsto i)} = A_i^{(k)}.\) The universal property follows from the fact that the underlying category has finite coproducts.
+
+For products, consider the set \(\Phi \defeq \setgiven{(\varphi_1,\varphi_2)}{\varphi_1 \colon K \to I, \varphi_2 \colon K \to \N_{\geq 1}, \varphi_1(k) \in I_k}\) with the relation 
+\[(\varphi_1, \varphi_2) \leq (\psi_1, \psi_2) \text{if and only if } \varphi_1(k) \leq \psi_1(k), \varphi_2(k) \leq \psi_2(k).\] This is directed set. Now for \(\varphi = (\varphi_1, \varphi_2) \in \Phi,\) define \[A_\varphi \defeq \setgiven{(x_k) \in \prod_{k \in K} A_{\varphi_1(k)}^{(k)}}{\frac{\norm{x_k}}{\varphi_2(k)} \text{ is bounded}}.\] With the semi-norm defined by \(\varrho((x_k)) = \sup_{k} \frac{\norm{x_k}}{\varphi_2(k)},\) we get an inductive system of semi-normed spaces. Finally, the projections defined by \(A_{\varphi} \to A_{\varphi(k)}^{(k)}\) assemble to yield morphisms of inductive systems \((A_{\varphi})_{\varphi \in \Phi} \to A^{(k)}\) for each \(k\). These satisfy the universal property of products, which is left for the reader to check.  
+\end{proof}
+
+
+We now relate the categories of bornological vector spaces with the categories of inductive systems of topological vector spaces. The bornological vector spaces we have built have essentially been constructed out of topological vector spaces associated to unit balls or bounded disks. In this section, we make this construction precise. Let \(V\) be a bornological vector space. The collection of its bounded subsets \(\mathcal{B}(V)\) and bounded disks \(\mathcal{B}_d(V)\) are directed sets with respect to inclusion and absorption. As the latter family is cofinal in the former, we restrict attention to \(\mathcal{B}_d(V)\) with respect to absorption. 
+
+Now each element \(D\) of \(\mathcal{B}_d(V)\) is the unit ball of a semi-normed space \(V_D = \R_{\geq 0} \cdot D\). Suppose we take \(D \subseteq_a D'\), we get an bounded linear inclusion \(V_D \subseteq V_D'\). It is easy to see that the assignment \(\mathcal{B}_d(V) \ni D \mapsto V_D \in \mathsf{Norm}^{1/2}\) is a functor. That is, \((V_D)_{D \in \mathcal{B}_d(V)}\) is a directed set. Furthermore, if \(f \colon V \to W\) is a bounded linear map, then for any bounded disk \(S\subseteq V\), there is a bounded disk \(T\) containing \(f(S)\), so we get an induced linear map \(V_S \to W_T\). These actually combine to a morphism of inductive systems \((V_S)_{S \in \mathcal{B}_d(V)} \to (W_T)_{T \in \mathcal{B}_d(W)}\) \textbf{check this}. In summary, we obtain a functor 
+
+\[\mathsf{diss} \colon \mathsf{Born}_\C \to \mathsf{Ind}(\mathsf{Norm}_{\C}^{1/2}),\] which we call the \textit{dissection functor}. The same assigment restricts to functors \[\mathsf{diss} \colon \mathsf{Born}_\C^s \to \mathsf{Ind}(\mathsf{Norm}_\C), \quad \mathsf{CBorn}_\C \to \mathsf{Ind}(\mathsf{Ban}_\C),\] since for bounded disks \(D\) in separated (respectively complete) bornological vector spaces, the associated semi-normed vector space \(V_D\) is normed (respectively, Banach), by definition.
+
+
+There is also an obvious functor from inductive systems of semi-normed spaces to bornological vector spaces, namely, the \textit{inductive limit functor}. Note that the inductive limit exists as the category of bornological vector spaces is bicomplete. We describe it more concrete as follows: given an inductive system \((V_i)_{i \in I}\) of semi-normed spaces, we take its inductive limit \(\varinjlim_{i \in I} V_i\) as an ordinary vector space, and equip it with the bornology where a subset is bounded if and only if it is contained in the image of \(V_i\) for some \(i \in I\). 
+
+Now suppose \((V_i)_{i \in I}\) is an inductive system of normed spaces. Taking the bornological inductive limit as above need not be separated, so we need to take the separated quotient \(\mathsf{sep} \varinjlim (V_i) = (\varinjlim_{i \in I} V_i)/\overline{\{0\}}\) to ensure this. The same construction also yields a complete bornological vector space if we start with an inductive system of Banach spaces. We now analyse the relationship between the dissection and (separated) inductive limit functors:
+
+\begin{proposition} We have the following:
+\begin{enumerate}
+    \item\label{prop:1-ind} We have natural isomorphisms \(\mathsf{sep} \varinjlim\mathsf{diss} (V) \cong V\) for \(V \in \mathsf{Born}_\C^s\);
+    \item\label{prop:2-ind} The functor \(\mathsf{diss} \colon \mathsf{Born}_\C^s \to  \mathsf{Ind}(\mathsf{Norm}_\C)\) is fully faithful;
+    \item\label{prop:3-ind} It commutes with inverse limits and direct sums;
+    \item\label{prop:4-ind} It commutes with \(\mathsf{Hom}\), or more generally multilinear maps; that is, 
+    \[\mathsf{Hom}^{(n)}(\mathsf{diss}(V_1) \times \dotsc \times \mathsf{diss}(V_n), \mathsf{diss}(W)) \cong \mathsf{diss}(\mathsf{Hom}^{(n)}(V_1 \times \dotsc \times V_n, W)).\]
+    \item\label{prop:5-ind} \(\mathsf{sep} \varinjlim \colon \mathsf{Ind}(\mathsf{Norm}_\C) \to \mathsf{Born}_\C^s \) is left adjoint to the dissection functor;
+    \item\label{prop:6-ind} The assertions above hold for \((\mathsf{Born}_\C, \varinjlim, \mathsf{diss})\) and \((\mathsf{CBorn}_\C, \mathsf{sep}\varinjlim, \mathsf{diss})\). 
+\end{enumerate}
+
+\end{proposition}
+
+\begin{proof}
+
+Let \(V\) be a separated bornological vector space. We first show that there is a vector space isomorphism between \(\mathsf{sep} \varinjlim \mathsf{diss}(V)\) and \(V\). To this end, we first write \(V = \bigcup V_D\) for normed spaces \(V_D\). This is precisely the vector space inductive limit \(\varinjlim \mathsf{diss}(V)\). To see that this is also the bornological inductive limit, we see that a subset is bounded if and only if it is contained in \(V_D\) for some bounded disk \(D\). Finally, since \(V\) is separated, taking separated quotients does nothing, proving \ref{prop:1-ind}. 
+
+
+\end{proof}

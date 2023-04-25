@@ -1,0 +1,251 @@
+
+The equibounded bornology can be generalized to the context of multilinear maps. Namely, 
+given $n \in \N$ and $V_1, \ldots, V_n, W$ bornological vector spaces, we say that a  
+family $L$ of multilinear maps $V_1 \times \cdots \times V_n \to W$ is \emph{equibounded} if
+for each collection of bounded subsets $B_i \in \mathcal B(V_i)$, $i \in \{1, \ldots, n\}$ the set
+\[
+  L(B_1 \times \cdots \times B_n) = \{T(B_1 \times \cdots \times B_n) : T \in L\}  
+\]
+is bounded on $W$. A multilinear map $T \colon V_1 \times \cdots \times V_n \to W$ is \emph{bounded}
+if it maps products of bounded subsets to bounded subsets; equivalently $T$ is bounded if $\{T\}$ 
+is equibounded. 
+An argument along the lines of Lemma \ref{lem:equi-born} shows that
+bounded multilinear maps together with subsets of equibounded
+multilinear maps form a bornology; we denote this bornological vector space by
+$\Hom^{(n)}(V_1 \times \cdots \times V_n; W)$.
+We record the following consequence from the definitions for future usage.
+\begin{lemma}\label{lem:bounded-coarsefine-mult}
+Let $V_1, \ldots, V_n, W$ be bornological vector spaces and let
+$T \colon V_1 \times \cdots \times V_n \to W$ be a bounded multilinear map.
+Given bornologies $B_i \subset \mathcal B(V_i)$ 
+for each $i \in \{1, \ldots,n\}$ and $B \supset \mathcal B(W)$, the map $T$ 
+remains bounded as a multilinear map $(V_1, B_1) \times \cdots \times (V_n, B_n) \to (W,B)$.  
+\qed
+\end{lemma}
+
+When the bornological vector spaces considered arise from 
+locally convex topological vector spaces, 
+a natural question to ask is 
+what precisely is the relation between continuity and boundedness 
+of a multilinear function. Not only that, one may wonder if there are differences
+in the notions of boundedness 
+when using the von Neumann bornology or the precompact bornology. 
+As it turns out, if $V_1, \ldots, V_n$
+are additionally Frechét speces then all of 
+these notions are one and the same:
+
+\begin{proposition}\label{prop:mult-frechet} Let $V_1, \ldots, V_n$ be Frechét spaces and let $W$ be 
+a locally convex topological vector space.  Given an $n$-multilinear
+map $T \colon V_1 \times \cdots \times V_n \to W$, 
+the following statements are equivalent:
+\begin{itemize}
+    \item[(i)] The map $f$ is continuous.
+    \item[(ii)] The map $f$ is separately continuous, that is, for each $i \in \{1, \ldots, n\}$
+    and $v \in \prod_{j \neq i} V_j$, the map $f(v_1, \ldots, v_{i-1}, -, v_{i+1}, \ldots, v_n) \colon V_i \to W$ 
+    is continuous. 
+    \item[(iii)] Given sequences $(v^1_k)_{k \in \N}, \ldots, (v^n_k)_{k \in \N}$ converging to zero, 
+    the sequence $(T(v^1_k, \ldots, v^n_k))_{k \in \N}$ is (von Neumann) bounded in $W$. 
+    \item[(iv)] The map $f$ is bounded as a multilinear map $\Cpt(V_1) \times \cdots \times \Cpt(V_n) \to \Cpt(W)$.
+    \item[(v)] The map $f$ is bounded as a multilinear map $\vN(V_1) \times \cdots \times \vN(V_n) \to \vN(W)$.
+    \item[(vi)] The map $f$ is bounded as a multilinear map $\Cpt(V_1) \times \cdots \times \Cpt(V_n) \to \vN(W)$.
+\end{itemize}
+\end{proposition}
+\begin{proof} It is a classical results that
+conditions (i), (ii), and (iii) are equivalent to each other (see 
+for instance \cite{??}*{??}). 
+Conditions (iv) and (v) both imply (vi) by Lemma \ref{lem:bounded-coarsefine-mult}. 
+To see that (vi) implies (iii) it suffices to show that a sequence $S = (v^i_k)_{k\in\N} 
+\subset V_i$ converging to zero is a proecompact subset. Indeed, if 
+$U$ is a neighbourhood of the origin, we know that there exists $n_0 \in \N$
+such that $v^i_k \in U$ if $k \ge n_0$ and so 
+\[
+S \subset \{v^i_1, \ldots, v^i_{n_0}\} \cup U \subset \{0,v^i_1, \ldots, v^i_{n_0}\} + U.
+\]
+To conclude we note that (i) implies both (iv) and (v). Both assertions 
+stem from the fact that products of precompact (resp. von Neumann bounded) subsets
+are precompact (resp. von Neumann bounded) in $V_1 \times \cdots \times V_n$, and 
+a continuous map $V_1 \times \cdots \times V_n \to W$ is bounded 
+when equipping $V_1 \times \cdots \times V_n$ and $W$ with the precompact (resp. von Neumann)
+bornology. 
+\end{proof}
+
+
+\subsection{Convergence}
+
+We continue expanding our dictionaly of notions in the
+setting of bornological vector spaces, comparing these 
+definititons
+with their classical counterparts in functional analysis.
+
+Let $V$ be a bornological vector space. We say that 
+a sequence $(x_n)_{n \in \N} \subset V$ is 
+\emph{bornologically convergent} to $x \in V$ if there 
+exists a bounded disk $D$ such that $(x_n)_{n \in \N}$ converges
+to $x$ in $V_D$. Similarly, we say that $(x_n)_{n \in \N}$ 
+is a bornological a Cauchy sequence if it 
+is a Cauchy sequence in $V_D$ for some bounded disk $D$.
+
+\begin{example} \label{ex:conv-semi}
+If $V$ is a semi-normed space and we equip it with its
+von Neumann bornology, the usual notions of convergence
+and Cauchy sequences coincide with the bornological ones. 
+\end{example}
+
+\begin{lemma} \label{lem:finer-conv} Let $V$ a vector space and $B \subset B'$
+two bornologies on $V$. If $(x_n)_{n \in \N} \subset V$ is 
+bornologically convergent to $x \in V$ for $B$, then it 
+is also bornologically convergent to $x \in V$ for $B'$.
+\end{lemma}
+\begin{proof} By hypothesis $x_n \to x$ in $V_D$
+for some disk $D \in B$. This disk is also bounded for $B'$, 
+from which the lemma follows.
+\end{proof}
+
+\begin{proposition}[Uniqueness of limits] A 
+bornonological vector space $V$ is separated 
+if and only if every sequence converges 
+to at most one point. 
+\end{proposition}
+\begin{proof} Suppose that a sequence $(x_n)_{n \in \N}$ 
+converges simlultaneously to two
+elements $x,y \in V$. By definition, there exist 
+bounded disks $D, D' \in \mathcal B_d(V)$ such that 
+$x_n \to x$ in $V_D$ and $x_n \to y$ in $V_{D'}$. 
+Given that $V$ is separated, there exists a 
+norming disk $D''$ containing both $D$ and $D'$. 
+Note that in particular we have continuous
+inclusions $(V_D, p_D) \to (V_{D''}, p_{D''})$
+and $(V_{D'}, p_{D'}) \to (V_{D''}, p_{D''})$.
+It follows that $(x_n)_{n \in \N}$ converges to both 
+$x$ and $y$ in $V_{D''}$. 
+Since $V_{D''}$ is a normed space, it is Hausdorff; 
+this implies that $x = y$ as wanted.
+
+Conversely, suppose that convergent 
+sequences in $V$ have unique limits. 
+Given a bounded subset $B$, we will see that its
+disked hull $D$ is normed. If it were not the case,
+then there must exist $z \in V_D \setminus \{0\}$ such that 
+the gauge semi-norm $p_D$
+associated to $D$ satisfies 
+$p_D(z) = 0$. This is absurd, as it would 
+imply that the constant sequence $z_n := z$
+converges both to $z$ and $0$. 
+\end{proof}
+
+Example \ref{ex:conv-semi} can be 
+generalized to Frechét spaces, as the following result shows.
+
+\begin{theorem} \label{thm:frechet-convergence}
+Let $V$ be a Frechét space and $(x_n)_{n \in \N} \subset V$.
+The following statements are equivalent:
+\begin{itemize}
+    \item[(i)] The sequence $(x_n)_{n \in \N}$ is convergent (resp. Cauchy).
+    \item[(ii)] The sequence $(x_n)_{n \in \N}$ is bornologically convergent (resp. Cauchy)
+    for the von Neumann bornology.
+    \item[(iii)] The sequence $(x_n)_{n \in \N}$ is bornologically convergent (resp. Cauchy)
+    for the precompact bornology.
+\end{itemize}
+\end{theorem}
+\begin{proof} 
+The fact that (ii) and (iii)
+are equivalent statements
+is left as Exercise \ref{ex:conv-Cpt=vN}; we prove that (i) 
+is equivalent to (ii).
+
+Suppose that $(x_n)_{n\in\N}$ 
+is bornologically convergent for the von Neumann bornology to a point $x \in V$ and
+let $\mathcal F = \{p_i\}_{i \in I}$ be a family of semi-norms defining the topology of $V$.
+By definition, there exists a von Neumann bounded disk $D$ such that
+$x_n \to x$ in $V_D$. Since $D$ is bounded 
+the unit ball $B_i$ of each semi-norm $p_i$ 
+absorbs $D$, which implies that $p_i(x_n) \to p(x)$ for all semi-norms $p_i \in \mathcal F$. 
+Because the topology on $V$ is initial 
+with respect to the family $\mathcal F$, 
+it follows that $(x_n)_{n \in \N}$ 
+converges to $x$ in $V$. The statement 
+for Cauchy sequences is proved analogously.
+
+Conversely, suppose that $X = (x_n)_{n \in \N}$ converges topologically to a point $x \in V$.
+Without loss of generality we may suppose that the family of semi-norms 
+defining the is increasing.
+In particular, we may fix a countable set $(V_n)_{n\in\N}$ of 
+circled, convex, decreasing set of neighbourhoods of $0$.
+By hypothesis, for each $n \in \N$ all but finitely many elements of $X$
+lie in $V_n$. Thus, upon dilating $V_n$ by a suitable positive constant $\lambda_n$,
+we have that $X \subset \lambda_n V_n$.
+
+Put $B = \cap_{n \ge 1} n\lambda_n V_n$. It follows that $B$ is a bounded disk; we shall presently 
+see that $x_n \to x$ in $V_B$. It suffices to see that given $M \ge 1$,
+all but finitely many elements of $X$ lie in $(1/M)B$. Note that
+\[
+(1/M)B
+= \bigcap_{n \le M} (n/M) \lambda_n V_n 
+\cap \bigcap_{n > M} (n/M) \lambda_n V_n.
+\]
+Since $X \subset \lambda_n V_n \subset (n/M)  \lambda_n V_n$ for all $n > M$, it remains 
+to show that all but finitely many elements of $X$ lie in $\bigcap_{n \le M} n\lambda_n V_n$, which follows from the fact that this is a neighbourhood of
+the origin and $x_n\to 0$ topologically.
+The same argument replacing $X$ by
+$Y := \{x_n-x_m : n,m \in\N\}$ yields the result for Cauchy sequences.
+\end{proof}
+
+
+%\begin{definition}[absolutely summable, continuous and smooth functions] Let $V$ be a bornological vector space and $X$ a set.
+%A function $f \colon X \to V$ is said to be \emph{absolutely summable} if $p_D \circ f \colon X \to \R_{\ge 0}$ 
+%is absolutely summable for some bounded disk $D \subset V$.
+%The space of such functions will be denoted $\ell^1(X,V)$.
+
+%Suppose additionally that $X$ is a compact
+%topological space. A function $f \colon X \to V$ 
+%is said to be
+%continuous if there exists $D\in %\mathcal B_d(V)$
+%such that it can be corestricted to a 
+%continuous function $X \to V_D$. 
+%The space of continuous will be denoted $\mathcal C(X,V)$. 
+
+%A subset $S \subset \mathcal C(X,V)$ is \emph{uniformly bounded} if they the elements of $S$ can all be corestricted to $V_D$
+%for some bounded disk $D$. We say that $S$ is \emph{uniformly
+%continuous} if it is uniformly bounded in the sense above
+%and additionally the family $\{f|^{V_D} : f \in S\}$ is uniformly continuous.
+%\end{definition}
+
+%\begin{proposition} If 
+%$V$ is a Frechét space, 
+%a series is absolutely summable
+%if it is so for the von Neumann
+%or precompact bornologies.
+%\end{proposition}
+%\begin{proof}
+%\end{proof}
+
+%The collections of uniformly bounded and 
+%uniformly continuous maps endow 
+%$\mathcal C(X,V)$ with
+%two bornological vector space structures. 
+%Unless explictly mentioned, we consider $\mathcal C(X,V)$
+%with the uniformly continuous bornology. 
+
+%\begin{example} If $X$ is a 
+%compact topological space, 
+%then $C(X, \C) = C(X)$ is a Banach
+%space. By the Arzelà-Ascoli
+%theorem, its bornology of 
+%uniformly continuous subsets 
+%coincides with the precompact bornology. In contrast, its
+%bornology of uniformly bounded
+%functions 
+%is the von Neumann bornology.
+%\end{example}
+
+%\begin{theorem}[\cite{meyer-metrizable}*{Theorem 3.7}] Let $V$ be a Frechét
+%space and $X$ a compact topological
+%space. There is a bornological isomorphism
+%\[
+%\mathcal C(X, \Cpt(V)) \simeq \Cpt(\mathcal C(X,V)).
+%\]
+%Likewise, a subset of $\mathcal %C(X,V)$ is von Neumann bounded %if 
+%and only if it is uniformly %bounded
+%as a subset of $\mathcal C(X, %\vN(V))$.
+%\qed
+%\end{theorem}

@@ -1,0 +1,63 @@
+
+Throughout this section, we work with vector spaces over \(\R\) and \(\C\). We first start with an investigation of the internal structure of topological vector spaces. More concretely, if we start with a vector space \(V\) with a semi-norm \(\rho \colon V \to \R_{\geq 0}\), we can define a subset \[B \defeq \setgiven{x \in V}{\rho(x) \leq 1},\] called the \emph{unit ball} of \(\rho\). This subset satisfies the following properties:
+
+\begin{enumerate}
+    \item For all scalars \(\lambda \in \C\) with \(\abs{\lambda} \leq 1\), we have \(\lambda \cdot B \subseteq B\);
+    \item For all \(x\), \(y \in B\), \(tx + (1-t)y \in B\) for all \(t \in [0,1]\);
+    \item If for all \(r \in [0,1)\) we have \(rx \in B\), then \(x \in B\);
+    \item \(\R_{\geq 0} \cdot B = V\).
+\end{enumerate}
+
+\begin{definition}
+    A subset \(D \subseteq V\) of a vector space is called a \emph{disk} if it satisfies the first two properties above. We call a disk \textit{internally closed} if it satisfies the third property. A disk is said to be \emph{absorbent} if it satisfies the fourth property. 
+\end{definition}
+
+
+What is insightful is that every semi-norm can be recovered from an internally closed, absorbent disk, as the following theorem reveals:
+
+\begin{theorem}
+   Let \(D \subseteq V\) be an internally closed, absorbent disk. There exists a semi-norm \(\rho \colon V \to \R_{\geq 0}\) whose closed unit ball is \(D\). 
+\end{theorem}
+
+\begin{proof}
+    The required semi-norm is given by 
+    \[\rho \colon V \to \R_{\geq 0}, \qquad \rho(x) \defeq \inf \setgiven{\lambda \geq 0}{x \in \lambda D}.\]
+    To begin with, this assignment is well-defined because if \(x \in V\), then since \(D\) is absorbent, there really is a \(\lambda \in \R_{\geq 0}\) and a \(v \in V\) such that \(x = \lambda v\). To see that it is scale-invariant, let \(\lambda \in \C\) and \(x \in V\). If \(\lambda = 0\), then this is clear, so let us assume otherwise. 
+    Moreover, since $S^1 \cdot D = D$, it follows that $\rho(\omega x) = \rho(x)$ for all $\omega \in S^1$, $x \in V$
+    and thus we may assume $\lambda \in \R_{> 0}$.
+    We then have \(\rho(\lambda x) = \inf \setgiven{\alpha \geq  0}{\lambda x \in \alpha D} = \inf \setgiven{\alpha \geq 0}{x \in \frac{\alpha}{\lambda} D }\) and
+    \begin{align*}
+        \lambda \rho(x) &= \lambda\inf \setgiven{\alpha \geq 0}{x \in \alpha D} \\
+        & =\inf \setgiven{\beta = \lambda\alpha }{x \in \alpha D} = \inf\left\{\beta \ge 0 :  x \in \frac{\beta}{\lambda} D \right\},
+    \end{align*} as required. Finally, to show the triangle inequality, we use that \(D\) is absorbent to find \(\alpha\) and \(\beta\) such that \(x \in \alpha D\) and \( y \in \beta D\). Therefore, \(x + y \in \alpha D + \beta D = (\alpha + \beta) D,\) where the second equality follows from convexity. Consequently, \(\rho(x + y) \leq \alpha + \beta\). Since \(\alpha\) and \(\beta\) are arbitrary, we have \(\rho(x+ y) \leq \rho(x) + \rho(y)\). That the unit ball of this semi-norm is \(B\) is clear.
+\end{proof}
+
+The semi-norm in the proof of theorem above is called the \emph{gauge semi-norm} on a disk. Note that if \(D\) is a not necessarily absorbent disk in \(V\), then we can make it absorbent in the subspace \(V_D \defeq \R_{\geq 0} \cdot D\). The latter when equipped with the gauge semi-norm
+ \[\rho \colon V \to \R_{\geq 0}, \qquad \rho(x) \defeq \inf \setgiven{\lambda \geq 0}{x \in \lambda D}.\]
+becomes a semi-normed space inside \(V\), which in itself is just a vector space. We shall call a disk \(D\) \emph{norming} if \(V_D\) with the gauge semi-norm is actually a normed space; we call it \emph{complete} if \(V_D\) is completed and normed, that is, a Banach space. In conclusion, we have in some sense created a topological vector space from a disk, which is just a subset of a vector space with some axioms. This is exactly what we set out to do.
+
+
+\begin{definition}[Bornology]
+A \emph{bornology} on a vector space \(V\) is a collection \(\mathfrak{B}\) of its subsets (called \emph{bounded subsets}) satisfying the following natural properties:
+
+\begin{itemize}
+\item \(\{x\} \in \mathfrak{B}\) for all \(x \in V\);
+\item if \(S \subseteq T\) and \(T \in \mathfrak{B}\), then \(S \in \mathfrak{B}\);
+\item \(S \cup T \in \mathfrak{P}\) whenever \(S\), \(T \in \mathfrak{B}\);
+\item if \(S \in \mathfrak{B}\), then \(r S \in \mathfrak{B}\) for \(r>0\);
+\item any subset \(S \in \mathfrak{B}\) is contained in a disk \(T \in \mathfrak{B}\). 
+\end{itemize}
+
+
+\end{definition}
+
+We call a bornological vector space \emph{separated} if every bounded subset is contained in a norming disk; we call it \emph{complete} if every bounded subset is contained in a complete, bounded disk. Denote by \(\mathcal{B}(V)\) the collection of bounded subsets of a bornological vector space \(V\). We also have two other related collections, namely, the collections \(\mathcal{B}_d(V)\) and \(\mathcal{B}_c(V)\) of bounded disks, and complete bounded disks. These collections carry two canonical preorders, namely, inclusion and \emph{absorption}, where we say \(S \subseteq_a T\) if there exists a \(c>0\) such that \( S \subseteq c T\). Recall that sets with preorders \((S, \leq)\) form a category, where objects are given by elements of the set, and there is a unique morphism \(x \to y\) if and only if \(x \leq y\). We want the preordered sets \(\mathcal{B}(V) \supseteq \mathcal{B}_d(V) \supseteq \mathcal{B}_c(V)\) to carry all the topological information in a topological vector space, in the same sense that a sequence of seminorms carries all the information about, say, a Frechet space. To make this more precise, we will need that these preordered sets viewed as categories are directed sets:
+
+\begin{lemma}\label{lem:bornologies-directed}
+The categories \(\mathcal{B}(V)\), \(\mathcal{B}_d(V)\) and \(\mathcal{B}_c(V)\) are directed. Furthermore, the subset \(\mathcal{B}_d(V)\) is cofinal in \(\mathcal{B}(V)\). The subset \(\mathcal{B}_c(V)\) is cofinal in \(\mathcal{B}(V)\) if and only if \(V\) is complete.  
+\end{lemma}
+
+\begin{proof}
+    Let \(D_1\) and \(D_2\) be bounded subsets of \(V\). Then \(D_1 + D_2\) is contained in the convex hull of \(2D_1 \cup 2D_2\), which is bounded as bornologies are closed under multiplication by positive real numbers, taking finite unions and convex hulls. Consequently, \(D_1 + D_2\) is bounded, as bornologies are hereditary for inclusions. This shows that \(\mathcal{B}(V)\) is directed. To see that \(\mathcal{B}_d(V)\) is directed, we need that \(D_1 + D_2\) is a disk, whenever \(D_1\) and \(D_2\) are bounded disks, and this is easy to see. Finally, if \(D_1\) and \(D_2\) are complete, bounded disks, then we need to show that \(D_1 + D_2\) is complete. It suffices to show that \(V_{D_1 + D_2}\) is a Banach space. To see this, consider the canonical map \(q \colon V_{D_1} \oplus V_{D_2} \to V_{D_1 + D_2}\) taking \((x,y) \mapsto x + y\). Then there is an isometric isomorphism \(V_{D_1} \oplus V_{D_2}/\ker(q) \cong V_{D_1 + D_2}\), where the domain has the quotient norm. We leave the 
+    details as Exercise \ref{ex:disk-sum-iso}.
+\end{proof}

@@ -1,0 +1,137 @@
+
+
+\section{placeholder}
+
+At the level of Banach spaces, continuity is the same as boundedness. We enlarged this category by taking its pro-completion, but problems persist if we care about say the topology on the mapping space. How about taking its ind-completion and working instead with bounded maps? This leads to the theory of bornological vector spaces. 
+
+\subsection{Bornological vector spaces over \(\R\) and \(\C\)}
+
+
+
+\begin{example}[Fine bornology]
+Finite dimensional subspaces of a vector space. It is the smallest bornology on a vector space.
+\end{example}
+
+\begin{example}[Von Neumann bornology]
+Let \(V\) be a locally convex topological vector space. A subset \(B\subseteq V\) is \emph{von-Neumann bounded} if \(\nu(B) \subseteq \R_{>0}\) for each semi-norm \(\nu\). Recovers `usual' boundedness.  
+\end{example}
+
+\begin{example}[Pre-compact bornology]
+Let \(V\) be a locally convex topological vector space. A subset \(B \subseteq V\) is \emph{pre-compact} if for every neighbourhood \(U\) of \(0\), there is a finite subset \(F \subseteq V\) such that \(B \subseteq U + F\).  
+\end{example}
+
+
+
+\begin{itemize}
+\item We like to work with \emph{complete} topological or bornological vector spaces (eg: Banach spaces). Define completion for bornological vector spaces.
+\item If the space is metrisable, then topological convergence and Cauchyness are equivalent to bornological convergence and Cauchyness (in the von Neumann and precompact bornologies);
+\item For a metrisable space, topological completeness is equivalent to completeness in the von Neumann and precompact bornology.
+\end{itemize}
+
+
+\subsection{Bornological vector spaces in the nonarchimedean setting}
+
+
+Copy-paste \cite{Cortinas-Cuntz-Meyer-Tamme:Nonarchimedean}*{Section 2}
+
+
+\subsection{Abstract models for bornologies}
+
+
+\begin{theorem}[Meyer, Meyer-Mukherjee]
+The category of complete bornological vector spaces over \(\R\), \(\C\) or \(\Q_p\) embeds into the category of inductive system of Banach spaces. The essential image of this functor is the category of inductive systems of Banach spaces with injective structure maps.
+\end{theorem}
+
+Viewing complete bornological vector spaces as certain inductive systems of Banach spaces, we can therefore reinterpret the bornological theory using categorical operations on the category of Banach spaces. 
+
+\begin{definition}
+Let \(R\) be a Banach ring. The category of complete bornological \(R\)-modules is defined as the category of inductive systems of Banach \(R\)-modules with injective structure maps.
+\end{definition}
+
+
+\begin{theorem}
+The above category has great properties.
+\end{theorem}
+
+
+\textbf{Mention application in analytic geometry.}
+
+
+\subsection{Internal closure}
+
+
+We start with a remark. If $(V,p)$ is a 
+semi-normed space with open and closed unit balls $B_1$ and $B_2$ respectively, 
+then any disk $B_1 \subset D \subset B_2$ gives rise to 
+the same gauge semi-norm in $V$. Thus, 
+the bijectivity of correspondence between
+disks and semi-norms breaks down for disks that are not internally closed.
+
+\begin{definition}
+Let $V$ be a vector space and $S \subset V$ a subset of $V$. 
+Its \emph{internal closure} $S^\intc$ is defined as the minimal
+internally closed set containing $S$.
+\end{definition}
+
+\begin{lemma} Let $V$ be a vector space. If $D \subset V$ is a disk, then: 
+\begin{itemize}
+\item[(i)] $D^\intc = \{x \in V : rx \in D  \ (\forall r \in [0,1))\}$;
+\item[(ii)] $D^\intc$ is a disk and $V_D = V_{D^\intc}$; 
+\item[(iii)] $D^\intc$ is the closed unit ball of $p_D$;
+\item[(iv)] $p_{D^\intc} = p_D$;
+\item[(v)] if $D$ is complete, then so is $D^\intc$.
+\end{itemize}
+\end{lemma}
+\begin{proof} Put $X = \{x \in V : rx \in D  \ (\forall r \in [0,1))\}$.
+Given $x \in D$ and $r \in [0,1)$, by hypothesis the convex combination $rx = rx+(1-r)0$ lies in $D$, so $D \subset X$. 
+Suppose now that $x \in V$ is such that $sx \in X$
+for any $s \in [0,1)$. Then, for any $r \in [0,1)$, we have $rsx \in D$.
+and in particular $rx = (\sqrt{r}\sqrt{r}) x$ lies in $D$ for any $r \in [0,1)$. 
+This shows that $x \in D^\intc$ and thus that $X$ is internally closed. To conclude 
+(i), note that if $Y \supset D$ is internally closed and $x \in X$, then $rx \in D \subset Y$ for all $r \in [0,1)$; hence $x \in Y$.
+
+From (i) it follows that $D^\intc$ is circled if $D$ is so.
+The rest of the assertions follow from the fact that for a given disk $D$, the closed unit ball of $V_D$ is an internally closed subset of $V$ containing $D$ and moreover it is minimal in this regard.
+\end{proof}
+
+
+\subsection{Disks again}
+
+Let \(V\) be a bornological vector space. Consider a bounded subset \(B \in \mathcal{B}(V)\). By the axioms of a bornology, \(B\) is contained in an \textbf{internally closed} disk \(D \in \mathcal{B}(V)\), that is, \(D\) is a bounded internally closed disk. 
+
+\begin{definition}
+    The disked hull \(B^\diamond\) of \(B\) is the intersection of all bounded, internally closed disks containing \(B\).
+\end{definition}
+
+Note that the above intersection is nonempty axiomatically. To compute it explicitly, we have the following:
+
+\begin{lemma}
+    \(B^\diamond \) is the internal closure of the set \(\setgiven{\sum_{i=1}^n \lambda_i x_i}{x_i \in B, \sum_{i=1}^n \abs{\lambda_i}\leq 1}\).
+\end{lemma}
+
+\begin{proof}
+    First of all, \(B^\diamond\) is a disk. It is also internally closed. \textbf{The minimality follows by construction, I suppose.}
+\end{proof}
+
+Now consider a complete bornological vector space \(V\). Then by axiom, any bounded subset \(B\) is contained in a complete, internally closed, bounded disk. 
+
+\begin{definition}
+The completed disked hull \(B^{\heartsuit}\) is the internal closure of the intersection of all complete, internally closed bounded disks containing \(B\).
+\end{definition}
+
+\begin{lemma}
+    \(B^\heartsuit = \setgiven{\sum_{n=0}^\infty \lambda_n x_n}{x_n \in B, \sum_{n \in \N} \abs{\lambda_n} \leq 1}^\intc\).
+\end{lemma}
+
+\begin{proof}
+    \textbf{Check}.
+\end{proof}
+
+
+\begin{theorem}
+    The categories \(\mathsf{D}(\mathsf{CBorn})\) and \(\mathsf{D}(\mathsf{Ind}(\mathsf{Ban}))\) are equivalent.
+\end{theorem}
+
+\begin{proof}
+    Let \(X \in \mathsf{Ind}(\mathsf{Ban})\) be an inductive system of Banach spaces. Its separated inductive limit is a complete bornological vector space, so we get a functor \[\mathsf{Ind}(\mathsf{Ban}_\C) \to \mathsf{CBorn}_\C.\] This functor is additive, so it extends to a functor on the homotopy categeory of chain complexes \[\mathsf{Kom}(\mathsf{Ind}(\mathsf{Ban})) \to \mathsf{Kom}(\mathsf{CBorn}_\C).\] \textbf{It can be shown} that this functor also Kan extends to the derived categories, so we get a functor in one direction. In the other direction, take a chain complex \(X\) in \(\mathsf{D}(\mathsf{CBorn})\). For a complete bornological vector space \(X\), define \(Q(X)\) as the inductive system \((\comb{X_i})_{i \in I}\), where \(\mathsf{diss}(X) = (X_i)\). In other words, this is the completion taken in the category of inductive systems of Banach spaces. This is an exact functor, so it extends to derived categories. The functors \(Q\) and \(R\varinjlim\) are inverse to each other.  
+\end{proof}
